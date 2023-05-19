@@ -40,18 +40,21 @@
             {
                 case "Y":
                     return true;
-                    break;
+                break;
 
                 case "N":
                     return false;
-                    break;
+                break;
 
+                default:
                     Console.WriteLine("Please input Y or N.");
                     Console.Write(w);
+                break;
+                
             }
         }
     }
-    
+
         static bool IsValidSequence(string halfDNASequence)
         {
             foreach (char nucleotide in halfDNASequence)
