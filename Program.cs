@@ -9,20 +9,23 @@
             Console.Write("Input DNA sequence: ");
             string inputdna = Console.ReadLine();
 
-                if (IsValidSequence(inputdna))
+            if (IsValidSequence(inputdna))
+            {
+                sub = "Do you want to replicate it ? (Y/N) : ";
+                Console.WriteLine("Current half DNA sequence : {0}", inputdna);
+                Console.Write(sub);
+
+                if (Inspect(sub))
                 {
-                    sub = "Do you want to replicate it ? (Y/N) : ";
-                    Console.WriteLine("Current half DNA sequence : {0}", inputdna);
-                    Console.Write(sub);
-
-                    if (Inspect(sub)){
                     inputdna = ReplicateSeqeunce(inputdna);
-                    Console.WriteLine("Replicated half DNA sequence : {0}", inputdna); }
+                    Console.WriteLine("Replicated half DNA sequence : {0}", inputdna);
+                }
 
-                }else{Console.WriteLine("That half DNA sequence is invalid.");}
+            }
+            else { Console.WriteLine("That half DNA sequence is invalid."); }
 
             sub = "Do you want to process another sequence ? (Y/N) : ";
-                Console.Write(sub);
+            Console.Write(sub);
 
         } while (Inspect(sub));
     }
@@ -33,39 +36,41 @@
         {
             string text = Console.ReadLine();
 
-            switch (text){
+            switch (text)
+            {
                 case "Y":
                     return true;
-                break;
+                    break;
 
                 case "N":
                     return false;
-                break;
+                    break;
 
-            Console.WriteLine("Please input Y or N.");
-            Console.Write(w);
-        }
-    }
-
-    static bool IsValidSequence(string halfDNASequence)
-    {
-        foreach (char nucleotide in halfDNASequence)
-        {
-            if (!"ATCG".Contains(nucleotide))
-            {
-                return false;
+                    Console.WriteLine("Please input Y or N.");
+                    Console.Write(w);
             }
         }
-        return true;
     }
-
-    static string ReplicateSeqeunce(string halfDNASequence)
-    {
-        string result = "";
-        foreach (char nucleotide in halfDNASequence)
+    
+        static bool IsValidSequence(string halfDNASequence)
         {
-            result += "TAGC"["ATCG".IndexOf(nucleotide)];
+            foreach (char nucleotide in halfDNASequence)
+            {
+                if (!"ATCG".Contains(nucleotide))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
-        return result;
+
+        static string ReplicateSeqeunce(string halfDNASequence)
+        {
+            string result = "";
+            foreach (char nucleotide in halfDNASequence)
+            {
+                result += "TAGC"["ATCG".IndexOf(nucleotide)];
+            }
+            return result;
+        }
     }
-}
