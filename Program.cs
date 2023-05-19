@@ -32,14 +32,16 @@
         while (true)
         {
             string text = Console.ReadLine();
-            if (text == "Y")
-            {
-                return true;
-            }
-            if (text == "N")
-            {
-                return false;
-            }
+
+            switch (text){
+                case "Y":
+                    return true;
+                break;
+
+                case "N":
+                    return false;
+                break;
+
             Console.WriteLine("Please input Y or N.");
             Console.Write(w);
         }
